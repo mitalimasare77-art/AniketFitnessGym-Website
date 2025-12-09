@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AniketFitness Gym — Indore</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --accent:#ff3b3b;
+      --accent-2:#ffb86b;
+      --bg:#0a0b0d;
+      --card:#071827;
+      --text:#e6eef6;
+      --muted:#9aa3b2;
+      --coach-blue:#bfe9ff;
+      --plan-red:#ff3b3b;
+      --glass: rgba(255,255,255,0.04);
+      --success: #29a067;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background: linear-gradient(180deg,var(--bg), #050607);
+      color:var(--text);
+      font-family:Inter, sans-serif;
+      line-height:1.6;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding-bottom:40px;
+    }
+
+    .container{max-width:1100px;margin:0 auto;padding:0 1.25rem}
+
+    /* Header */
+    .site-header{
+      position:sticky;top:0;z-index:60;
+      background:linear-gradient(180deg, rgba(2,4,8,0.92), rgba(2,4,8,0.75));
+      backdrop-filter:blur(6px);
+      border-bottom:1px solid rgba(255,255,255,0.03);
+    }
+    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:0.9rem 0}
+
+    .logo { display:flex; align-items:center; gap:.9rem; }
+    .logo-box{
+      width:56px;
+      height:56px;
+      border-radius:10px;
+      background:#ffffff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:var(--plan-red);
+      font-weight:900;
+      font-size:1.05rem;
+      border:1px solid rgba(0,0,0,0.06);
+      box-shadow:0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .site-title{
+      font-size:1.9rem;
+      font-weight:900;
+      line-height:1;
+      color:var(--plan-red);
+      padding:.12rem .7rem;
+      border-radius:10px;
+      background: linear-gradient(90deg, rgba(255,59,59,0.07), rgba(255,184,107,0.03));
+      text-shadow:0 12px 40px rgba(255,59,59,0.12);
+    }
+    .site-sub{font-size:.78rem;color:var(--muted);margin-top:2px}
+
+    .site-nav{display:flex;gap:1rem}
+    .site-nav a{color:rgba(230,238,246,0.92);text-decoration:none;font-weight:600;padding:.45rem .65rem;border-radius:8px;transition:background .14s}
+    .site-nav a:hover{background:rgba(255,255,255,0.03)}
+    .nav-toggle{display:none;background:none;border:0;color:white;font-size:1.25rem}
+
+    /* HERO */
+    .hero{
+      background-image: linear-gradient(to bottom, rgba(3,6,15,0.62), rgba(3,6,15,0.5)), url('https://images.unsplash.com/photo-1558611848-73f7eb4001d7?auto=format&fit=crop&w=1680&q=80');
+      background-size:cover;
+      background-position:center;
+      color:white;
+      padding:4.5rem 0;
+      border-radius:0 0 24px 24px;
+      box-shadow:0 20px 50px rgba(2,6,23,.45)
+    }
+    .hero-content{max-width:920px}
+    .eyebrow{display:inline-block;background:var(--glass);padding:.25rem .6rem;border-radius:999px;font-weight:700;margin-bottom:.8rem;color:var(--muted)}
+    .hero h2{font-size:2.2rem;margin:.25rem 0 0.6rem;color:#fff}
+    .lead{opacity:.95;font-size:1.05rem;color:#e6eef6}
+    .hero-cta{margin-top:1.1rem}
+    .btn{display:inline-block;padding:.7rem 1.1rem;border-radius:12px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;text-decoration:none;font-weight:700;box-shadow:0 8px 20px rgba(255,59,59,.18);transition:transform .14s}
+    .btn:hover{transform:translateY(-3px)}
+    .btn-alt{background:transparent;border:2px solid rgba(255,255,255,0.06);padding:.6rem 1rem;border-radius:12px;color:#fff;margin-left:.6rem}
+
+    /* gallery */
+    .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:1.5rem}
+    .gallery img{width:100%;height:120px;object-fit:cover;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,.6);transition:transform .25s}
+    .gallery img:hover{transform:scale(1.04)}
+
+    /* Sections */
+    .section{padding:2.2rem 0}
+    h3{margin:0 0 1rem;color:#e9f0f7}
+    .info-list{display:flex;gap:1.5rem;list-style:none;padding:0;margin:.5rem 0;color:var(--muted)}
+
+    /* Coaches */
+    .coaches .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .card{
+      background:var(--coach-blue);
+      color:#0a0a0a;
+      padding:1.1rem;border-radius:14px;
+      box-shadow:0 12px 30px rgba(0,0,0,.06);
+      border:1px solid rgba(0,0,0,0.06);
+      transition:transform .18s;
+    }
+    .card:hover{transform:translateY(-6px)}
+    .avatar{width:88px;height:88px;border-radius:50%;overflow:hidden;margin-bottom:.5rem;border:3px solid rgba(0,0,0,0.06)}
+    .card h4{margin:.25rem 0;color:var(--plan-red)}
+    .card .muted{color:var(--muted-dark)}
+    .card .small{font-size:.86rem;color:#0a0a0a;opacity:.85}
+    .card ul{margin:.4rem 0 0;padding-left:1rem;color:#06202a}
+
+    /* PLANS */
+    .plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:1rem}
+    .plan{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid rgba(255,255,255,0.04);
+      padding:1.15rem;border-radius:14px;color:var(--text);
+      box-shadow:0 12px 28px rgba(0,0,0,0.6);
+    }
+    .plan.featured{grid-column:span 1; border:2px solid rgba(255,184,107,0.12); box-shadow:0 18px 40px rgba(255,184,107,0.04)}
+    .plan h4{margin:0 0 .4rem;color:#fff;font-size:1.1rem}
+    .price{font-size:1.4rem;font-weight:800;margin:.2rem 0 .6rem;color:var(--accent)}
+    .badge-pop{display:inline-block;background:rgba(255,184,107,0.12);padding:.25rem .6rem;border-radius:999px;font-weight:700;color:var(--accent-2);font-size:0.82rem}
+    .feature-list{margin:0;padding-left:1rem;color:var(--muted);line-height:1.45}
+    .plan-cta{display:flex;gap:.6rem;margin-top:.8rem;align-items:center}
+
+    /* Plan details expand */
+    .plan .tags{display:flex;gap:.45rem;flex-wrap:wrap;margin-top:.55rem}
+    .pill{background:rgba(255,255,255,0.03);padding:.28rem .5rem;border-radius:999px;font-size:.82rem;color:var(--muted)}
+
+    /* Schedule */
+    .schedule{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:1rem}
+    .schedule .card-s{background:var(--card);padding:1rem;border-radius:10px;color:var(--text);box-shadow:0 8px 22px rgba(0,0,0,.6)}
+    .schedule table{width:100%;border-collapse:collapse;color:var(--text)}
+    .schedule th,.schedule td{padding:.45rem .5rem;text-align:left;font-size:.95rem;border-bottom:1px dashed rgba(255,255,255,0.03);color:var(--muted)}
+
+    /* Addons */
+    .addons{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.6rem}
+    .addon{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:.5rem .7rem;border-radius:10px;border:1px solid rgba(255,255,255,0.03);font-weight:700}
+
+    /* Experience */
+    .exp-list{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .exp{
+      background:linear-gradient(180deg,#07121a,#081424);
+      padding:1rem;border-radius:12px;color:#e6eef6;box-shadow:0 10px 24px rgba(0,0,0,.6)
+    }
+    .exp h4{margin:0 0 .4rem}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .contact-form input,
+    .contact-form textarea{
+      padding:.7rem;border-radius:10px;
+      border:1.6px solid rgba(255,255,255,0.04);
+      background:rgba(255,255,255,0.02);
+      color:#e6eef6;
+      width:100%;
+    }
+
+    .site-footer{padding:1.2rem 0;text-align:center;background:#04070a;color:#98a3b3;margin-top:2rem;border-top:1px solid rgba(255,255,255,0.02)}
+
+    @media(max-width:980px){
+      .plans-grid{grid-template-columns:repeat(2,1fr)}
+      .coaches .cards{grid-template-columns:1fr 1fr}
+      .exp-list{grid-template-columns:1fr}
+      .schedule{grid-template-columns:1fr}
+    }
+
+    @media(max-width:680px){
+      .gallery{grid-template-columns:repeat(2,1fr)}
+      .coaches .cards{grid-template-columns:1fr}
+      .site-nav{display:none}
+      .nav-toggle{display:block}
+      .hero h2{font-size:1.6rem}
+      .plans-grid{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+    }
+
+    /* small helpers */
+    .muted{color:var(--muted)}
+    .center{display:flex;align-items:center;gap:.5rem}
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="logo">
+      <div class="logo-box">AB</div>
+      <div>
+        <div class="site-title">AniketFitness <span style="color:var(--plan-red)">Gym</span></div>
+        <div class="site-sub">Bhawarkua, Indore</div>
+      </div>
+    </div>
+
+    <button class="nav-toggle">☰</button>
+
+    <nav class="site-nav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#coaches">Coaches</a>
+      <a href="#plans">Plans</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="container hero-content">
+      <span class="eyebrow">Bhawarkua • Indore</span>
+      <h2>Train with purpose. Transform with care — premium facilities now available.</h2>
+      <p class="lead">AniketFitness Gym — modern equipment, experienced coaches, spa & recovery, group classes and personalised plans.</p>
+
+      <div class="hero-cta">
+        <a class="btn" href="#contact">Get Started</a>
+        <a class="btn btn-alt" href="#plans">See Plans</a>
+      </div>
+
+      <div class="gallery" aria-hidden="true">
+        <img src="https://tse1.mm.bing.net/th/id/OIP.yDpIXjE6qrSh1556H3bs0AHaEK?pid=Api" alt="gym1" />
+        <img src="https://tse4.mm.bing.net/th/id/OIP.mWZIKQ3gfoUIH3kcuqNhBwHaEK?pid=Api" alt="gym2" />
+        <img src="https://tse1.mm.bing.net/th/id/OIP.TULZ2ajDBoXyE_LZENfAJgHaE8?pid=Api" alt="gym3" />
+        <img src="https://tse1.mm.bing.net/th/id/OIP.hQJqB1WJyieYPXsKzZyf-wHaGD?pid=Api" alt="gym4" />
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="section container">
+    <h3>About AniketFitness Gym</h3>
+    <p>Located in Bhawarkua, Indore, AniketFitness Gym is a premium training environment for all levels — beginners to athletes. Now with spa, steam, sauna, group classes and advanced body-analysis tools.</p>
+
+    <ul class="info-list">
+      <li><strong>Place:</strong> Indore</li>
+      <li><strong>Address:</strong> Bhawarkua, Indore</li>
+      <li><strong>Hours:</strong> 5:30 AM — 10:00 PM</li>
+    </ul>
+  </section>
+
+  <!-- Coaches -->
+  <section id="coaches" class="section coaches container">
+    <h3>Meet Our Coaches</h3>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="avatar"><img src="https://tse2.mm.bing.net/th/id/OIP.qjBFEq10cl5lySutc7fEnwHaNK?pid=Api" style="width:100%;height:100%;object-fit:cover" alt="Aniket"></div>
+        <h4>Aniket Bichhawa</h4>
+        <p class="muted">Founder & Head Trainer</p>
+        <p class="small">10+ years — Strength training, body transformations. Certified Strength Coach & Nutrition basics.</p>
+        <ul>
+          <li><strong>Years:</strong> 10+</li>
+          <li><strong>Certs:</strong> Certified Strength Coach, Nutrition & Rehab basics</li>
+          <li><strong>Specialties:</strong> Hypertrophy, Periodization, Sustainable transformations</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="avatar"><img src="https://tse2.mm.bing.net/th/id/OIP.7O_ZNeHffqQ5t5TenKRIMgHaJS?pid=Api" style="width:100%;height:100%;object-fit:cover" alt="Parth"></div>
+        <h4>Parth Mahadik</h4>
+        <p class="muted">Strength & Conditioning Coach</p>
+        <p class="small">8+ years — technique and athlete preparation. Runs small-group clinics for lifts & movement screening.</p>
+        <ul>
+          <li><strong>Years:</strong> 8+</li>
+          <li><strong>Certs:</strong> Strength & Conditioning, Corrective Exercise</li>
+          <li><strong>Specialties:</strong> Powerlifting basics, Olympic lifts, movement screening</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="avatar"><img src="https://tse1.mm.bing.net/th/id/OIP.U5wzkcGZJH4ubC0uH1Ox6AHaNJ?pid=Api" style="width:100%;height:100%;object-fit:cover" alt="Mitali"></div>
+        <h4>Mitali Masare <span style="font-weight:600;color:var(--muted);font-size:.85rem">(Partner)</span></h4>
+        <p class="muted">Women's Fitness & Wellness Coach</p>
+        <p class="small">7+ years — female-specific programming, mobility and pre/postnatal care. Runs women-only small groups.</p>
+        <ul>
+          <li><strong>Years:</strong> 7+</li>
+          <li><strong>Certs:</strong> Women's Health Specialist, Mobility & Rehab basics</li>
+          <li><strong>Specialties:</strong> Functional strength for women, mobility, postpartum recovery</li>
+        </ul>
+        <div style="margin-top:.6rem;display:flex;gap:.4rem;">
+          <a class="btn" href="#contact" style="padding:.4rem .6rem;font-size:.9rem">Book</a>
+          <a class="btn btn-alt" href="#experience" style="padding:.4rem .6rem;font-size:.9rem">Read Story</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PLANS -->
+  <section id="plans" class="section container">
+    <h3>Membership Plans — Updated Packages & Facilities</h3>
+    <p class="muted">Choose a plan that fits your goals. All plans come with secure lockers and shower access. Premium tiers include spa & recovery options.</p>
+
+    <div class="plans-grid" role="list">
+
+      <!-- BASIC -->
+      <div class="plan" role="listitem" aria-label="Basic Plan">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h4>Basic</h4>
+          <div class="pill">Best for beginners</div>
+        </div>
+        <div class="price">₹999 <span style="font-size:.86rem;color:var(--muted)">/ month</span></div>
+        <ul class="feature-list">
+          <li>Gym access (all equipment)</li>
+          <li>Locker & Shower</li>
+          <li>Free group classes (limited slots)</li>
+          <li>Access: 5:30 AM — 10:00 PM</li>
+        </ul>
+        <div class="plan-cta">
+          <a class="btn" href="#contact">Sign Up</a>
+          <div class="tags">
+            <span class="pill">Locker</span><span class="pill">Showers</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- STANDARD -->
+      <div class="plan" role="listitem" aria-label="Standard Plan">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h4>Standard</h4>
+          <div class="badge-pop">Popular</div>
+        </div>
+        <div class="price">₹1799 <span style="font-size:.86rem;color:var(--muted)">/ month</span></div>
+        <ul class="feature-list">
+          <li>Everything in Basic</li>
+          <li>4 PT sessions / month (1:1)</li>
+          <li>Custom workout plan + weekly schedule guide</li>
+          <li>Priority class booking</li>
+        </ul>
+        <div class="plan-cta">
+          <a class="btn" href="#contact">Sign Up</a>
+          <div class="tags">
+            <span class="pill">4 PT sessions</span><span class="pill">Schedule Guide</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PREMIUM -->
+      <div class="plan featured" role="listitem" aria-label="Premium Plan">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h4>Premium</h4>
+          <div class="pill">Most value</div>
+        </div>
+        <div class="price">₹2799 <span style="font-size:.86rem;color:var(--muted)">/ month</span></div>
+        <ul class="feature-list">
+          <li>Everything in Standard</li>
+          <li>Unlimited group classes (Zumba, Yoga, CrossFit)</li>
+          <li>Steam bath access (alternate days)</li>
+          <li>Monthly body analysis (basic)</li>
+        </ul>
+        <div class="plan-cta">
+          <a class="btn" href="#contact">Sign Up</a>
+          <div class="tags">
+            <span class="pill">Steam Bath</span><span class="pill">Unlimited Classes</span>
+            <span class="pill">Body Analysis</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ELITE -->
+      <div class="plan" role="listitem" aria-label="Elite Plan">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h4>Elite</h4>
+          <div class="pill">All-inclusive</div>
+        </div>
+        <div class="price">₹3999 <span style="font-size:.86rem;color:var(--muted)">/ month</span></div>
+        <ul class="feature-list">
+          <li>Everything in Premium</li>
+          <li>SPA sessions (monthly allotment) + Sauna access</li>
+          <li>Detailed body analysis & full diet chart</li>
+          <li>Priority trainer support & emergency consults</li>
+        </ul>
+        <div class="plan-cta">
+          <a class="btn" href="#contact">Sign Up</a>
+          <div class="tags">
+            <span class="pill">SPA</span><span class="pill">Sauna</span><span class="pill">Diet Chart</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- COUPLE / FAMILY -->
+      <div class="plan" role="listitem" aria-label="Couple Plan">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <h4>Couple / Family</h4>
+          <div class="pill">For 2 members</div>
+        </div>
+        <div class="price">₹4999 <span style="font-size:.86rem;color:var(--muted)">/ month</span></div>
+        <ul class="feature-list">
+          <li>All Premium benefits for 2 members</li>
+          <li>Flexible timings & combined diet plan</li>
+          <li>2x PT sessions monthly (shared or separate)</li>
+          <li>Couple massage & spa discount</li>
+        </ul>
+        <div class="plan-cta">
+          <a class="btn" href="#contact">Sign Up</a>
+          <div class="tags">
+            <span class="pill">2 Members</span><span class="pill">Shared PT</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Add-ons -->
+    <div style="margin-top:1rem">
+      <h4 style="margin:0 0 .5rem">Special Add-ons (optional)</h4>
+      <div class="addons">
+        <div class="addon">Spa Session — ₹499</div>
+        <div class="addon">Steam Bath (Monthly Pass) — ₹299</div>
+        <div class="addon">Sauna Session — ₹399</div>
+        <div class="addon">Massage Therapy (30 min) — ₹599</div>
+        <div class="addon">Detailed Body Analysis — ₹899</div>
+        <div class="addon">Personal Diet Chart (1 mo) — ₹699</div>
+        <div class="addon">Zumba / Dance Workshop — ₹399</div>
+        <div class="addon">Yoga (Monthly) — ₹699</div>
+        <div class="addon">CrossFit Drop-in — ₹499</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Schedule -->
+  <section id="schedule" class="section container">
+    <h3>Weekly Classes & Timings</h3>
+    <p class="muted">Morning and evening slots — classes run by experienced coaches. Reserve slots via front desk or contact form.</p>
+
+    <div class="schedule">
+      <div class="card-s">
+        <h4 style="margin-top:0">Weekday Schedule (Mon — Fri)</h4>
+        <table>
+          <thead>
+            <tr><th>Time</th><th>Class</th><th>Coach</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>06:00 — 07:00</td><td>Morning Strength</td><td>Aniket</td></tr>
+            <tr><td>07:30 — 08:30</td><td>Yoga Flow</td><td>Mitali</td></tr>
+            <tr><td>12:30 — 01:15</td><td>Quick HIIT</td><td>Parth</td></tr>
+            <tr><td>17:30 — 18:30</td><td>Zumba / Dance</td><td>Mitali</td></tr>
+            <tr><td>19:00 — 20:00</td><td>CrossFit Basics</td><td>Parth</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card-s">
+        <h4 style="margin-top:0">Weekend Schedule (Sat — Sun)</h4>
+        <table>
+          <thead>
+            <tr><th>Time</th><th>Class</th><th>Coach</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>07:00 — 08:00</td><td>Group Mobility</td><td>Mitali</td></tr>
+            <tr><td>09:00 — 10:30</td><td>Strength Clinic</td><td>Aniket</td></tr>
+            <tr><td>11:00 — 12:00</td><td>Powerlifting Workshop</td><td>Parth</td></tr>
+            <tr><td>16:00 — 17:00</td><td>Family Fitness</td><td>Team</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="muted" style="margin-top:.8rem"><strong>Note:</strong> Steam/sauna timings are scheduled post evening classes (20:15 — 21:30) — Elite & Premium members get priority booking.</p>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience" class="section container">
+    <h3>Coach Experience & Stories</h3>
+
+    <div class="exp-list">
+
+      <div class="exp">
+        <h4 style="color:var(--plan-red)">Aniket Bichhawa — Head Trainer</h4>
+        <p><strong>Overview:</strong> 10+ years; builds periodized strength programs and transformation plans. Focuses on injury-safe progress and habit-building.</p>
+      </div>
+
+      <div class="exp">
+        <h4 style="color:var(--plan-red)">Parth Mahadik — Strength & Conditioning</h4>
+        <p><strong>Overview:</strong> 8+ years; athlete prep, movement screening, technique workshops, power & explosive training.</p>
+      </div>
+
+      <div class="exp">
+        <h4 style="color:var(--plan-red)">Mitali Masare — Women's Wellness & Mobility</h4>
+        <p><strong>Overview:</strong> 7+ years; female-focused programming, mobility, postpartum & lifestyle coaching.</p>
+      </div>
+
+      <div class="exp">
+        <h4 style="color:var(--plan-red)">Community</h4>
+        <p class="muted">Monthly challenges, transformation showcases, community meet-ups and coach-led workshops to keep motivation high.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section container">
+    <h3>Contact & Visit</h3>
+
+    <div class="contact-grid">
+      <div>
+        <p><strong>Gym:</strong> AniketFitness Gym</p>
+        <p><strong>Location:</strong> Bhawarkua, Indore</p>
+        <p><strong>Coaches:</strong> Aniket Bichhawa, Parth Mahadik, Mitali Masare</p>
+        <p><strong>Phone:</strong> +91 9XXXXXXXXX</p>
+        <p><strong>Timing:</strong> 5:30 AM — 10:00 PM</p>
+
+        <h4 style="margin-top:.6rem">Facilities</h4>
+        <ul class="muted" style="padding-left:1rem">
+          <li>Spa (Elite monthly allotment)</li>
+          <li>Steam Bath (Premium access)</li>
+          <li>Sauna (Elite)</li>
+          <li>Lockers & Showers</li>
+          <li>Body Analysis & Nutrition Consults</li>
+        </ul>
+      </div>
+
+      <form id="contactForm" class="contact-form" novalidate>
+        <label style="display:block;margin-bottom:.25rem">Name</label>
+        <input id="name" name="name" placeholder="Your name" required />
+
+        <label style="display:block;margin: .55rem 0 .25rem">Email</label>
+        <input id="email" name="email" type="email" placeholder="you@example.com" required />
+
+        <label style="display:block;margin: .55rem 0 .25rem">Message / Request</label>
+        <textarea id="message" name="message" rows="4" placeholder="Which plan or addon are you interested in?" required></textarea>
+
+        <div style="display:flex;gap:.6rem;margin-top:.6rem">
+          <button type="submit" class="btn">Send</button>
+          <button type="button" class="btn btn-alt" onclick="document.getElementById('message').value = 'Interested in Premium/Elite — need details';">Quick: Interested</button>
+        </div>
+      </form>
+    </div>
+
+    <div style="margin-top:1rem;">
+      <p style="color:var(--muted);margin-bottom:.5rem">Map:</p>
+      <iframe width="100%" height="260" frameborder="0" style="border:0;border-radius:8px"
+        src="https://www.google.com/maps?q=Bhawarkua+Indore&output=embed"></iframe>
+    </div>
+
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; <span id="year"></span> AniketFitness Gym — Bhawarkua, Indore</p>
+    <p class="muted" style="font-size:.9rem;margin-top:.25rem">Questions? Call +91 9XXXXXXXXX or visit us during gym hours.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // simple contact submit handler (demo)
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value || 'Member';
+    alert('Thanks ' + name + '! We received your request. We will contact you soon (demo).');
+    this.reset();
+  });
+</script>
+
+</body>
+</html>
